@@ -6,6 +6,7 @@ process.on('uncaughtException', (error) => {
 import express from 'express';
 import { config } from 'dotenv';
 import path from 'path';
+import cors from 'cors';
 
 import { AppEroor } from './src/utils/appError.js';
 
@@ -28,6 +29,7 @@ config();
 
 const app = express();
 const port=process.env.PORT 
+app.use(cors());
 
 dbConnection(process.env.DB_CONNECTION)
 app.use(express.json());
